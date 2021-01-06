@@ -23,4 +23,6 @@ function sum(array) {
 }
 
 console.log(sum(range(1, 10)));
-
+console.log(sum(range(1, 10, -1)));
+console.log(sum(range(1, 10, 3)));
+console.log(sum(range(10, 100, 2)));
