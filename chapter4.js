@@ -65,11 +65,64 @@ function arrayToList(array) {
   return list;
 }
 
+function listToArray(list) {
+  let array = [];
+  for (let i = list; i; i = i.rest) {
+    array.push(i.value);
+  }
+  return array;
+}
+
+function prepend(value, list) {
+  return {value, rest: list};
+}
+
+function nth(list, index) {
+  if(!list) 
+    return undefined;
+  else if(index == 0)
+    return list.value;
+  else 
+    return nth(list.rest, index - 1);
+}
+
 console.log(arrayToList([10, 20, 30, 40, 50]));
 // → {value: 10, rest: {value: 20, rest: null}}
-// console.log(listToArray(arrayToList([10, 20, 30])));
+console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
-// console.log(prepend(10, prepend(20, null)));
+console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
-// console.log(nth(arrayToList([10, 20, 30]), 1));
+console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
+
+
+///===========4===========
+
+function deepEqual(obj1, obj2) {
+  if (obj1 === obj2) 
+    return true;
+  
+  if (obj1 == null || typeof obj1 != "object" || obj2 == null || typeof obj2 != "object") 
+    return false;
+
+  let keys1 = Object.keys(obj1);
+  let keys2 = Object.keys(obj2);
+
+  if (keys1.length != keys2.length) 
+    return false;
+
+  for (let key of keys1) {
+    if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) 
+      return false;
+  }
+
+  return true;
+}
+
+let obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
