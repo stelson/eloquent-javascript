@@ -16,11 +16,11 @@ verify(/(lic|pac)ious/,
     ["how delicious", "spacious room"],
     ["ruinous", "consciousness"]);
 
-verify(/.../,
+verify(/[.]/,
     ["bad punctuation ."],
     ["escape the period"]);
 
-verify(/.../,
+verify(/\w{6}/,
     ["Siebentausenddreihundertzweiundzwanzig"],
     ["no", "three small words"]);
 
