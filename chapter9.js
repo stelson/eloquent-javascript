@@ -8,11 +8,11 @@ verify(/[a-z]{3} /,
     ["pop culture", "mad props"],
     ["plop", "prrrop"]);
 
-verify(/.../,
+verify(/ferr[eya]/,
     ["ferret", "ferry", "ferrari"],
     ["ferrum", "transfer A"]);
 
-verify(/.../,
+verify(/(lic|pac)ious/,
     ["how delicious", "spacious room"],
     ["ruinous", "consciousness"]);
 
